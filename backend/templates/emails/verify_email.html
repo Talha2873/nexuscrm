@@ -1,0 +1,33 @@
+{% extends "emails/base_email.html" %}
+{% block title %}Verify your email address{% endblock %}
+{% block content %}
+  <h1 style="margin:0 0 16px;font-size:22px;line-height:30px;font-weight:700;color:#0f172a;">
+    Confirm your email address
+  </h1>
+  <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#334155;">
+    Hi {{ user.first_name|default:"there" }}, thanks for signing up for {{ site_name }}.
+    Please confirm this address so we can secure your account and send you important updates.
+  </p>
+
+  <table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;">
+    <tr>
+      <td style="border-radius:8px;background-color:#2563eb;">
+        <a href="{{ verify_url }}"
+           style="display:inline-block;padding:13px 28px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;">
+          Verify email address
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin:0 0 8px;font-size:13px;line-height:20px;color:#64748b;">
+    If the button doesn't work, copy this link into your browser:
+  </p>
+  <p style="margin:0 0 20px;font-size:13px;line-height:20px;word-break:break-all;">
+    <a href="{{ verify_url }}" style="color:#2563eb;">{{ verify_url }}</a>
+  </p>
+
+  <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">
+    This link expires in 48 hours. If you didn't create an account, you can safely ignore this email.
+  </p>
+{% endblock %}

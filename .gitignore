@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+backups/
+
+# Migrations (intentionally not committed per START-HERE.md)
+backend/apps/*/migrations/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/

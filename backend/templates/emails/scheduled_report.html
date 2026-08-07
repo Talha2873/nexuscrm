@@ -1,0 +1,32 @@
+{% extends "emails/base_email.html" %}
+{% block title %}{{ report.name }}{% endblock %}
+{% block content %}
+  <h1 style="margin:0 0 8px;font-size:20px;line-height:28px;font-weight:700;color:#0f172a;">
+    {{ report.name }}
+  </h1>
+  <p style="margin:0 0 20px;font-size:13px;line-height:20px;color:#64748b;">
+    {{ organization.name }} · {{ period_label }}
+  </p>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;border-collapse:collapse;">
+    {% for metric in metrics %}
+      <tr>
+        <td style="padding:12px 0;border-bottom:1px solid #e2e8f0;font-size:14px;color:#475569;">{{ metric.label }}</td>
+        <td align="right" style="padding:12px 0;border-bottom:1px solid #e2e8f0;font-size:15px;font-weight:600;color:#0f172a;">
+          {{ metric.value }}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <table role="presentation" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="border-radius:8px;background-color:#2563eb;">
+        <a href="{{ frontend_url }}/reports/{{ report.id }}"
+           style="display:inline-block;padding:12px 24px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;">
+          View full report
+        </a>
+      </td>
+    </tr>
+  </table>
+{% endblock %}

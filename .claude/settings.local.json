@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:8000/health/)",
+      "Bash(npm run *)",
+      "Bash(echo \"Frontend PID: $!\")",
+      "Bash(curl -s -X POST http://localhost:8000/api/v1/auth/login/ -H \"Content-Type: application/json\" -d '{\"email\":\"demo@nexuscrm.io\",\"password\":\"Demo1234!\"}')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('Login OK, tokens:', list\\(d.keys\\(\\)\\)\\)\")"
+    ]
+  }
+}

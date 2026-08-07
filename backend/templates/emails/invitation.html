@@ -1,0 +1,32 @@
+{% extends "emails/base_email.html" %}
+{% block title %}You've been invited to {{ organization.name }}{% endblock %}
+{% block content %}
+  <h1 style="margin:0 0 16px;font-size:22px;line-height:30px;font-weight:700;color:#0f172a;">
+    Join {{ organization.name }} on {{ site_name }}
+  </h1>
+  <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#334155;">
+    {{ inviter_name }} invited you to join <strong>{{ organization.name }}</strong>
+    as a <strong>{{ role_display }}</strong>.
+  </p>
+
+  {% if message %}
+    <div style="margin:0 0 20px;padding:14px 16px;background-color:#f1f5f9;border-radius:8px;border-left:3px solid #2563eb;">
+      <p style="margin:0;font-size:14px;line-height:22px;color:#334155;font-style:italic;">"{{ message }}"</p>
+    </div>
+  {% endif %}
+
+  <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
+    <tr>
+      <td style="border-radius:8px;background-color:#2563eb;">
+        <a href="{{ accept_url }}"
+           style="display:inline-block;padding:13px 28px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;">
+          Accept invitation
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">
+    This invitation expires on {{ expires_at|date:"j F Y" }}.
+  </p>
+{% endblock %}

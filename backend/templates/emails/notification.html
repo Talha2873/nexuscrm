@@ -1,0 +1,28 @@
+{% extends "emails/base_email.html" %}
+{% block title %}{{ notification_title }}{% endblock %}
+{% block content %}
+  <h1 style="margin:0 0 16px;font-size:20px;line-height:28px;font-weight:700;color:#0f172a;">
+    {{ notification_title }}
+  </h1>
+  <p style="margin:0 0 20px;font-size:15px;line-height:24px;color:#334155;">
+    {{ notification_body }}
+  </p>
+
+  {% if action_url %}
+    <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 20px;">
+      <tr>
+        <td style="border-radius:8px;background-color:#2563eb;">
+          <a href="{{ frontend_url }}{{ action_url }}"
+             style="display:inline-block;padding:12px 24px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;">
+            {{ action_label|default:"View in NexusCRM" }}
+          </a>
+        </td>
+      </tr>
+    </table>
+  {% endif %}
+
+  <p style="margin:0;font-size:12px;line-height:18px;color:#94a3b8;">
+    Manage which emails you receive in
+    <a href="{{ frontend_url }}/settings/notifications" style="color:#2563eb;">notification settings</a>.
+  </p>
+{% endblock %}

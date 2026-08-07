@@ -1,0 +1,29 @@
+{% extends "emails/base_email.html" %}
+{% block title %}Welcome to {{ site_name }}{% endblock %}
+{% block content %}
+  <h1 style="margin:0 0 16px;font-size:22px;line-height:30px;font-weight:700;color:#0f172a;">
+    Welcome aboard, {{ user.first_name|default:"there" }}
+  </h1>
+  <p style="margin:0 0 16px;font-size:15px;line-height:24px;color:#334155;">
+    Your {{ site_name }} workspace{% if organization_name %} <strong>{{ organization_name }}</strong>{% endif %}
+    is ready. Here's a good order to start in:
+  </p>
+
+  <ol style="margin:0 0 24px;padding-left:20px;font-size:15px;line-height:26px;color:#334155;">
+    <li>Import or add your first customers and companies</li>
+    <li>Set up your sales pipeline stages</li>
+    <li>Invite your teammates</li>
+    <li>Ask the AI assistant to draft your first outreach email</li>
+  </ol>
+
+  <table role="presentation" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="border-radius:8px;background-color:#2563eb;">
+        <a href="{{ frontend_url }}/dashboard"
+           style="display:inline-block;padding:13px 28px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:8px;">
+          Open your dashboard
+        </a>
+      </td>
+    </tr>
+  </table>
+{% endblock %}

@@ -1,0 +1,39 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: { '@': path.resolve(__dirname, './src') },
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    // Required for hot reload to work inside Docker on Windows/macOS.
+    watch: { usePolling: true },
+    proxy: {
+      '/api': { target: 'http://localhost:8000', changeOrigin: true },
+      '/media': { target: 'http://localhost:8000', changeOrigin: true },
+    },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          mui: ['@mui/material', '@mui/icons-material'],
+          charts: ['chart.js', 'react-chartjs-2'],
+        },
+      },
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+    css: false,
+  },
+});

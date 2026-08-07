@@ -1,0 +1,25 @@
+{
+  "folders": [
+    { "name": "⚙️  Backend  (Django)", "path": "backend" },
+    { "name": "🎨  Frontend (React)", "path": "frontend" },
+    { "name": "🐳  Infrastructure", "path": "." }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/node_modules": true,
+      "**/.pytest_cache": true,
+      "**/.ruff_cache": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.black-formatter",
+      "batisteo.vscode-django",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss"
+    ]
+  }
+}
